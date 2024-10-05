@@ -207,11 +207,71 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                           );
                         }),
                   ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Text(
+                    'Discover new places',
+                    style: TextStyle(
+                      color: AppColors.secondaryColor,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  SizedBox(
+                    height: 120,
+                    child: ListView.builder(
+                        itemCount: 4,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return const Row(
+                            children: [
+                              PlacesLoop(
+                                imageUrl:
+                                    'https://images.pexels.com/photos/23732429/pexels-photo-23732429/free-photo-of-sailing-boats-in-bay.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                              ),
+                              PlacesLoop(
+                                  imageUrl:
+                                      'https://q-xx.bstatic.com/xdata/images/hotel/max600/427980688.jpg?k=2f4e5810eed431b9428c39043870efa31cfa78bf5700158a0f53c54eccd020f7')
+                            ],
+                          );
+                        }),
+                  )
                 ],
               ),
             ),
           ],
         ));
+  }
+}
+
+class PlacesLoop extends StatelessWidget {
+  const PlacesLoop({
+    super.key,
+    required this.imageUrl,
+  });
+
+  final String imageUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 20),
+      child: SizedBox(
+        width: 180,
+        height: 120,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(30),
+          child: Image.network(
+            imageUrl,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    );
   }
 }
 
