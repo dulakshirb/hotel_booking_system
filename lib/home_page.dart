@@ -23,37 +23,51 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screenList[screenNo],
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: const Color.fromARGB(202, 0, 0, 0),
-          ),
-          width: double.infinity,
-          height: 60,
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                bottomNavigationIcon(
-                    icon: Icons.navigation, iconText: 'Discover', index: 0),
-                bottomNavigationIcon(
-                    icon: Icons.favorite_outline,
-                    iconText: 'Favorites',
-                    index: 1),
-                bottomNavigationIcon(
-                    icon: Icons.book, iconText: 'Booking', index: 2),
-                bottomNavigationIcon(
-                    icon: Icons.message_rounded,
-                    iconText: 'Messages',
-                    index: 3),
-              ],
+      body: Stack(
+        children: [
+          screenList[screenNo], // Main content
+
+          // Positioned floating bottom navigation bar
+          Positioned(
+            left: 20,
+            right: 20,
+            bottom: 20,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: const Color.fromARGB(202, 0, 0, 0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 10,
+                    offset: Offset(0, 4),
+                  ),
+                ],
+              ),
+              height: 60,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    bottomNavigationIcon(
+                        icon: Icons.navigation, iconText: 'Discover', index: 0),
+                    bottomNavigationIcon(
+                        icon: Icons.favorite_outline,
+                        iconText: 'Favorites',
+                        index: 1),
+                    bottomNavigationIcon(
+                        icon: Icons.book, iconText: 'Booking', index: 2),
+                    bottomNavigationIcon(
+                        icon: Icons.message_rounded,
+                        iconText: 'Messages',
+                        index: 3),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -65,9 +79,9 @@ class _HomePageState extends State<HomePage> {
         setState(() {
           screenNo = index;
         });
-        // print(screenNo);
       },
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Icon(
             icon,
