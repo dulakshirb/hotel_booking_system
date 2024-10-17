@@ -1,11 +1,13 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:hotel_booking_app/providers/hotel_provider.dart';
 import 'package:hotel_booking_app/screens/booking_screen.dart';
 import 'package:hotel_booking_app/screens/discover_screen.dart';
 import 'package:hotel_booking_app/screens/favourite_screen.dart';
 import 'package:hotel_booking_app/screens/message_screen.dart';
 import 'package:hotel_booking_app/services/firebase_services.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,7 +30,9 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
 
-    FirebaseServices.getHotels();
+    FirebaseServices.getHotels().then((hotelsData) {
+      context.read<HotelProvider>().addHotels(hotels: hotelsData);
+    });
   }
 
   @override
@@ -56,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                       BoxShadow(
                         color: Colors.grey.shade200.withOpacity(0.2),
                         blurRadius: 10,
-                        offset: Offset(0, 4),
+                        offset: const Offset(0, 4),
                       ),
                     ],
                   ),
