@@ -100,7 +100,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                     height: 15,
                   ),
                   SizedBox(
-                    height: 300,
+                    height: 310,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 4,
@@ -109,7 +109,6 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                             padding: const EdgeInsets.only(right: 20),
                             child: Container(
                               width: 300,
-                              height: 300,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
                                 color: AppColors.primaryColor,
@@ -149,6 +148,8 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                                   Padding(
                                     padding: const EdgeInsets.all(15),
                                     child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           mainAxisAlignment:
@@ -197,6 +198,17 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                                               facilityName: '2 beds',
                                             ),
                                           ],
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          '\$150',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 16,
+                                            color: AppColors.secondaryColor,
+                                          ),
                                         ),
                                       ],
                                     ),
