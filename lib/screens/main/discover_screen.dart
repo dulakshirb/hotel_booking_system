@@ -106,7 +106,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                     height: 310,
                     child: Consumer<HotelProvider>(
                         builder: (context, hotels, child) {
-                      print(hotels.hotelsData);
+                      // print(hotels.hotelsData);
 
                       List<Hotel> allHotelData = hotels.hotelsData;
                       return hotels.hotelsData.isEmpty
